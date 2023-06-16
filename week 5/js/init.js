@@ -11,27 +11,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // create a function to add markers
 function addMarker(lat, lng, title, message) {
-    const circleMarker = L.circleMarker([lat, lng], {
-        color: 'blue', // Set the color of the circle marker
-        radius: 20, // Set the radius of the circle marker
-    }).addTo(map).bindPopup(`<h2>${title}</h2><h3>${message}</h3>`);
-
-    createButtons(lat, lng, title);
-
-    return message;
+    console.log(message)
+    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
+    return message
 }
-function createButtons(lat,lng,title,type){
-    const newButton = document.createElement("button"); // adds a new button
-    newButton.id = "button"+title; // gives the button a unique id
-    newButton.innerHTML = title; // gives the button a title
-    newButton.setAttribute("lat",lat); // sets the latitude 
-    newButton.setAttribute("lng",lng); // sets the longitude 
-    newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
-    })
 
-    document.getElementById("contents").appendChild(newButton); 
-}
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNq8_prhrSwK3CnY2pPptqMyGvc23Ckc5MCuGMMKljW-dDy6yq6j7XAT4m6GG69CISbD6kfBF0-ypS/pub?output=csv"
 
 
@@ -48,7 +32,7 @@ function processData(results){
     console.log(results)
     results.data.forEach(data => {
         console.log(data)
-        addMarker(data.lat,data.lng,data['What is the name of the place?'],data['What does it look like?'],data['Write a bit about the place!'],data['How would you rate it?'],data['What type of place is it?'])
+        addMarker(data.lat,data.lng,data['Have you been to an eatery in LA before?'],data['What is the name of the place?'],data['Where is it located?'],data['How would you rate it?'],data['Is there anything you would like to share about your experience there?'])
     })
 }
 
