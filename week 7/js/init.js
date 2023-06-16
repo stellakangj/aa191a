@@ -1,12 +1,12 @@
 // declare variables
 let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
-let vaccinated = L.featureGroup();
-let nonVaccinated = L.featureGroup();
+let food = L.featureGroup();
+let nonfood = L.featureGroup();
 
 let layers = {
-    "Vaccinated Respondent": vaccinated,
-    "Unvaccinated Respondent": nonVaccinated
+    "Food reccomended": food,
+    "Food not reccomended": nonfood
 }
 
 let circleOptions = {
@@ -34,14 +34,14 @@ let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/r
 Esri_WorldGrayCanvas.addTo(map);
 
 function addMarker(data){
-    if(data['Have you been vaccinated?'] == "Yes"){
+    if(data['Were you sarisfied with you experience'] == "Yes"){
         circleOptions.fillColor = "red"
-        vaccinated.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Vaccinated</h2>`))
+        food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food reccomended</h2>`))
         createButtons(data.lat,data.lng,data['What zip code do you live in?'])
         }
     else{
         circleOptions.fillColor = "blue"
-        nonVaccinated.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Non-Vaccinated</h2>`))
+        nonFood.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food not reccomended</h2>`))
         createButtons(data.lat,data.lng,data['What zip code do you live in?'])
     }
     return data
@@ -74,9 +74,9 @@ function processData(results){
         console.log(data)
         addMarker(data)
     })
-    vaccinated.addTo(map) // add our layers after markers have been made
-    nonVaccinated.addTo(map) // add our layers after markers have been made  
-    let allLayers = L.featureGroup([vaccinated,nonVaccinated]);
+    food.addTo(map) // add our layers after markers have been made
+    nonFood.addTo(map) // add our layers after markers have been made  
+    let allLayers = L.featureGroup([food,nonfood]);
     map.fitBounds(allLayers.getBounds());
 }
 
