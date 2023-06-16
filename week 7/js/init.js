@@ -34,7 +34,7 @@ let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/r
 Esri_WorldGrayCanvas.addTo(map);
 
 function addMarker(data){
-    if(data['Were you sarisfied with you experience'] == "Yes"){
+    if(data['Were you satisfied with you experience'] == "Yes"){
         circleOptions.fillColor = "red"
         food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food reccomended</h2>`))
         createButtons(data.lat,data.lng,data['What zip code do you live in?'])
@@ -42,7 +42,7 @@ function addMarker(data){
     else{
         circleOptions.fillColor = "blue"
         nonFood.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food not reccomended</h2>`))
-        createButtons(data.lat,data.lng,data['What zip code do you live in?'])
+        createButtons(data.lat,data.lng,data['Where is the eatery located?'])
     }
     return data
 }
