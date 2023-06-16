@@ -1,5 +1,5 @@
 // declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':14}
+let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
@@ -13,18 +13,11 @@ addMarker(34.05,-118.45,'Tsujita LA Artisan Noodles','This is one of my favorite
 addMarker(34.04,-118.44,'Beard Papas','This is where Professor Albert bought the Asian Am 191 Spring 2023 class cream puffs.')
 addMarker(34.0381,-118.442,'Artelice Patesserie','This is a bakery in Sawtelle that I visited with my friends over spring break. So good!')
 
-
-
 // create a function to add markers
-function addMarker(lat, lng, title, message) {
-    const circleMarker = L.circleMarker([lat, lng], {
-        color: 'blue', // Set the color of the circle marker
-        radius: 20, // Set the radius of the circle marker
-    }).addTo(map).bindPopup(`<h2>${title}</h2><h3>${message}</h3>`);
-
-    createButtons(lat, lng, title);
-
-    return message;
+function addMarker(lat,lng,title,message){
+    console.log(message)
+    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
+    return message
 }
 
 function createButtons(lat,lng,title){
@@ -39,29 +32,31 @@ function createButtons(lat,lng,title){
     
     document.getElementById("contents").appendChild(newButton); 
 }
-
 let circleMarker = L.circleMarker([34.0709, -118.444], {
-    color: 'blue', // Set the color of the circle marker
-    radius: 20, // Set the radius of the circle marker
-  }).addTo(map).bindPopup('First point to plot');
-  
-  createButtons(34.0709, -118.444, 'Demo Point');
+  color: 'blue', // Set the color of the circle marker
+  radius: 20, // Set the radius of the circle marker
+}).addTo(map).bindPopup('First point to plot');
+
+createButtons(34.0709, -118.444, 'Demo Point');
 
 
 
+fetch("map.geojson")
+    .then(response => {
+        console.log(response)
+        return response.json();
+    })
+    .then(data =>{
+        // the leaflet method for adding a geojson
 
-  fetch("map.geojson")
-  .then(response => {
-      return response.json()
-  })
-  .then(data =>{
-      // Basic Leaflet method to add GeoJSON data
-      L.geoJSON(data, {
-              pointToLayer: (feature, latlng) => { 
-                  return L.circleMarker(latlng, {color: feature.properties.color})
-              }
-          }).bindPopup(layer => {
-              return layer.feature.properties.place;
-          }).addTo(map);
-  })
+    
+        L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => { 
+                return L.circleMarker(latlng, {color: feature.properties.color})
+            }
+        }).bindPopup(layer => {
+            return layer.feature.properties.place;
+        }).addTo(map);
 
+        // do something with the data
+    })

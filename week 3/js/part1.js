@@ -16,15 +16,10 @@ addMarker(34.0381,-118.442,'Artelice Patesserie','This is a bakery in Sawtelle t
 
 
 // create a function to add markers
-function addMarker(lat, lng, title, message) {
-    const circleMarker = L.circleMarker([lat, lng], {
-        color: 'blue', // Set the color of the circle marker
-        radius: 20, // Set the radius of the circle marker
-    }).addTo(map).bindPopup(`<h2>${title}</h2><h3>${message}</h3>`);
-
-    createButtons(lat, lng, title);
-
-    return message;
+function addMarker(lat,lng,title,message){
+    console.log(message)
+    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
+    return message
 }
 
 function createButtons(lat,lng,title){
@@ -54,7 +49,7 @@ fetch("map.geojson")
         return response.json()
     })
     .then(data =>{
-        // Basic Leaflet method to add GeoJSON data
+        // leaflet method to to add GeoJSON data
         L.geoJSON(data, {
                 pointToLayer: (feature, latlng) => { 
                     return L.circleMarker(latlng, {color: feature.properties.color})
