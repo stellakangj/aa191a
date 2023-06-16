@@ -1,12 +1,15 @@
 body{
     display: grid;
-    grid-auto-rows: auto 1fr;
+    grid-template-rows: 50px auto auto;
     grid-template-areas: "header" "main_content" "footer";
     background-color: aqua;
+    gap: 10px;
 }
 
 header{
     grid-area: header;
+    justify-self: center;
+    align-self: center;
 }
 
 #footer{
@@ -27,17 +30,17 @@ header{
     grid-template-areas: "buttonHome" "survey"
 }
 
-
-
 #the_map{
     height:80vh;
     grid-area: main_map;
 }
 
 #theSurvey{
-    grid-area: survey; /* (1)! */
+    grid-area: survey;
 }
 
 #placeForButtons{
-    grid-area: buttonHome; /* (2)! */
+    grid-area: buttonHome;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
 }
