@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map and Survey</title>
+  <!-- hint: remember to change your page title! -->
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="styles/style.css">
+
+  <!-- Leaflet's css-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Leaflet's JavaScript-->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <li><a href="index.html">About Me</a></li>
+      <li><a href="maps.html">Share Reccomendations</a></li>
+      <div class="dot"></div>
+    </nav>
+  </header>
+
+  <div class="main" style="margin-top:9%; padding-left:15%; padding-right:15%;">
+        <div id="content">
+            <h1> Share your <font color="#737755"><i>Food Recs</i></font></h1>
+            <h2> <font color="#737755"><i>Food in LA</i></font></h2>
+            <p>In LA, you'll find chefs pushing the boundaries of innovation, using locally sourced ingredients to create awe-inspiring dishes that leave a lasting impression. Whether you're seeking the perfect slice of Neapolitan pizza, a plate of delectable sushi meticulously prepared by master chefs, or a farm-to-table feast that showcases the bounty of California's rich agricultural heritage, LA has many options. The city's serious approach to food extends beyond taste to include factors such as sustainability, authenticity, and culinary craftsmanship. If you have any reccomendations, please feel free to share by taking the survey! </p>
+            <div id="map-container">
+              <div id="the_map"></div> 
+
+              </div>
+              <div id="iframe-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd0yBLF_kZmW-NDRtu1zKrRtNGWZuT15CJittf83GuaVEKq4Q/viewform?embedded=true" width="640" height="678" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+              </div>
+            <div id="gif-container">
+                <div id="gif">
+                  <img src="assets/egg.gif" alt="egg" class="gif-asset">
+                </div>
+      </div>
+    </div>
+  <div id="footer">
+    Copyright(2023)
+  </div>
+  <script src="js/init.js"></script>
+</body>
+</html>

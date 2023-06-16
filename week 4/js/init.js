@@ -34,7 +34,7 @@ function createButtons(lat,lng,title){
 }
 let circleMarker = L.circleMarker([34.0709, -118.444], {
   color: 'blue', // Set the color of the circle marker
-  radius: 20, // Set the radius of the circle marker
+  radius: 10, // Set the radius of the circle marker
 }).addTo(map).bindPopup('First point to plot');
 
 createButtons(34.0709, -118.444, 'Demo Point');
