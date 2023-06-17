@@ -14,7 +14,6 @@ addMarker(34.04,-118.44,'Beard Papas','This is where Professor Albert bought the
 addMarker(34.0381,-118.442,'Artelice Patesserie','This is a bakery in Sawtelle that I visited with my friends over spring break. So good!')
 
 
-
 // create a function to add markers
 function addMarker(lat,lng,title,message){
     console.log(message)

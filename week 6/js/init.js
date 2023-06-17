@@ -32,7 +32,7 @@ const spaceForButtons = document.getElementById('placeForButtons')
 spaceForButtons.appendChild(newButton);//this adds the button to our page.
 }
 
-const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNq8_prhrSwK3CnY2pPptqMyGvc23Ckc5MCuGMMKljW-dDy6yq6j7XAT4m6GG69CISbD6kfBF0-ypS/pub?output=csv"
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFRtopaq7HsbzCUFqaorobKb0EjQNFNbf09FDFrza2WB8ZgNwebbTK7tW58Iv2FZdNVVY3JuVPTNqA/pub?output=csv"
 
 function loadData(url){
     Papa.parse(url, {

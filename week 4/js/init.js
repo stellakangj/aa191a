@@ -29,8 +29,7 @@ function createButtons(lat,lng,title){
     newButton.addEventListener('click', function(){
         map.flyTo([lat,lng]); 
     })
-    
-    document.getElementById("contents").appendChild(newButton); 
+    document.getElementById("spaceForButtons").appendChild(newButton); 
 }
 let circleMarker = L.circleMarker([34.0709, -118.444], {
   color: 'blue', // Set the color of the circle marker

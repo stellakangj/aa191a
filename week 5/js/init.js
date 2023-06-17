@@ -32,7 +32,7 @@ function processData(results){
     console.log(results)
     results.data.forEach(data => {
         console.log(data)
-        addMarker(data.lat,data.lng,data['Have you been to an eatery in LA before?'],data['What is the name of the place?'],data['Where is it located?'],data['How would you rate it?'],data['Is there anything you would like to share about your experience there?'])
+        addMarker(data.lat,data.lng,data['What is the name of the place?'],data['Where is the eatery located?'],data['Were you satisfied with your experience?'],data['Have you gone back?'],data['Is there anything else you would like to share?'])
     })
 }
 

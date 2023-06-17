@@ -27,7 +27,7 @@ header{
     grid-area: content;
     display: grid;
     grid-template-rows: 3fr 1fr; 
-    grid-template-areas: "buttonHome" "survey"
+    grid-template-areas: "survey" "buttonHome" 
 }
 
 #the_map{
@@ -37,7 +37,7 @@ header{
 
 #theSurvey{
     grid-area: survey;
-    justify-self: center; /* added this to center the button in the div */
+    /* justify-self: center; added this to center the button in the div */
 }
 
 /* css for the button */
