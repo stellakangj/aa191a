@@ -8,31 +8,26 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-function addMarker(data){
-    // console.log(data)
-    // these are the names of our lat/long fields in the google sheets:
+//add buttons based on the data from a spreadsheet
+function processData(results) {
+    results.data.forEach(data => {
+      addMarker(data);
+      createButton(data.lat, data.lng, data['Where is the eatery located?']);
+    });
+  }
+  
+  function createButton(lat, lng, title) {
+    const newButton = document.createElement("button");
+    newButton.innerHTML = title;
+    newButton.addEventListener('click', function() {
+      map.flyTo([lat, lng]);
+    });
+    const spaceForButtons = document.getElementById('placeForButtons');
+    spaceForButtons.appendChild(newButton);
+  }
+  
 
-
-    L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data['What zip code do you live in?']}</h2> <h3>${data['Have you been vaccinated?']}</h3>`)
-    // adding our create button function
-    createButtons(data.lat,data.lng,data['Where is the eatery located?'])
-    return data['Where is the eatery located?']
-}
-
-function createButtons(lat,lng,title){
-const newButton = document.createElement("button"); // adds a new button
-newButton.id = "button"+title; // gives the button a unique id
-newButton.innerHTML = title; // gives the button a title
-newButton.setAttribute("lat",lat); // sets the latitude 
-newButton.setAttribute("lng",lng); // sets the longitude 
-newButton.addEventListener('click', function(){
-    map.flyTo([lat,lng]); //this is the flyTo from Leaflet
-})
-const spaceForButtons = document.getElementById('placeForButtons')
-spaceForButtons.appendChild(newButton);//this adds the button to our page.
-}
-
-const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFRtopaq7HsbzCUFqaorobKb0EjQNFNbf09FDFrza2WB8ZgNwebbTK7tW58Iv2FZdNVVY3JuVPTNqA/pub?output=csv"
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsjRq560pGcFJ5u3VcKZZABdC3YiFvBfYdAqf2C8aU-3bSN_XNrnC-eftIauGwCAYCaBKwuNKXW5ir/pub?output=csv"
 
 function loadData(url){
     Papa.parse(url, {
