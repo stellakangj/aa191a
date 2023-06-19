@@ -28,3 +28,15 @@ header{
     height:80vh;
     grid-area: main_map;
 }
+.leaflet-popup-content {
+    width: 400px;
+    height: auto;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
