@@ -10,12 +10,29 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Create a function to add markers
 function addMarker(data) {
-  const lat = parseFloat(data.lat);
-  const lng = parseFloat(data.lng);
-  const title = data['Where is the eatery located?'];
 
-  const marker = L.marker([lat, lng]).addTo(map);
-  marker.bindPopup(title);
+  if (data["Were you satisfied with your experience?"] == "positive experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'green'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'green');
+    return;
+  } else if (data["Were you satisfied with your experience?"] == "negative experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'red'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'red');
+    return;
+  } else if (data["Were you satisfied with your experience?"] == "neutral experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'yellow'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'yellow');
+    return;
+  }
 }
 
 // Process the loaded data

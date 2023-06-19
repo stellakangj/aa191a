@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Map and Survey</title>
+        <title>Hello World</title>
         <!-- hint: remember to change your page title! -->
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
@@ -12,22 +12,25 @@
 
         <!-- Leaflet's JavaScript-->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="js/papaparse.min.js"></script>
 
+        <!-- Papa Parse -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     </head>
 
     <body>
         <header>
-            <li><a href="index.html">About Me</a></li>
-            <li><a href="maps.html">Share Reccomendations</a></li>        </header>
+Favortite Foods        </header>
 
         <div class="main">
-            <div id="headers">
-                <h1 style="padding-left: 25px;">Food Recommendations in LA</h1>            <br><br><br>
-            <div id="placeForButtons"></div>
             <div id="contents">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdu26tPQ_8GEIMWUNNXAlVWjB7imZ1wWspzALi0mefe8N4geg/viewform?embedded=true" width="640" height="1344" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>            </div>
-        </div>
+                <div id="placeForButtons"></div>
+                <!-- Be sure to use your own survey here!!!!!!! -->
+                <div id="theSurvey">
+                    <div id="surveyButton">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdu26tPQ_8GEIMWUNNXAlVWjB7imZ1wWspzALi0mefe8N4geg/viewform?embedded=true" width="640" height="1344" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>                    </div>
+                </div>
+
+            </div>
             <div id="the_map"></div>
         </div>
         <div id="footer">
