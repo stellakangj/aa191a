@@ -1,61 +1,65 @@
-body{
+body {
     display: grid;
     grid-template-rows: 50px auto auto;
-    grid-template-areas: "header" "main_content" "footer";
-    background-color: rgb(238, 232, 206);
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    background-color: whitesmoke;
     gap: 10px;
-}
-
-header{
+  }
+  
+  header {
     grid-area: header;
     justify-self: center;
     align-self: center;
-}
-
-#footer{
-    grid-area: footer;
-}
-
-.main{
-    grid-area: main_content;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "main_map content";
+  }
+  
+  .main {
+    grid-area: main;
     display: grid;
-}
-
-#contents{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "map content";
+  }
+  
+  #the_map {
+    height: 80vh;
+    grid-area: map;
+  }
+  
+  #contents {
     grid-area: content;
     display: grid;
-    grid-template-rows: 3fr 1fr; 
-    grid-template-areas: "survey" "buttonHome" 
-}
-
-#the_map{
-    height:80vh;
-    grid-area: main_map;
-}
-
-#theSurvey{
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas:
+      "survey"
+      "buttons";
+  }
+  
+  #theSurvey {
     grid-area: survey;
-    /* justify-self: center; added this to center the button in the div */
-}
-
-/* css for the button */
-#surveyButton{
+  }
+  
+  #placeForButtons {
+    grid-area: buttons;
+    display: subgrid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  #footer {
+    grid-area: footer;
+  }
+  
+  /* CSS for the button */
+  #surveyButton {
     padding: 15px 32px;
     margin: 10px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     cursor: pointer;
-}
-
-/* css for button to get rid of the underline */
-#surveyButton a{
-    text-decoration: none; 
-}
-
-#placeForButtons{
-    grid-area: buttonHome;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
+  }
+  
+  /* CSS for button to remove the underline */
+  #surveyButton a {
+    text-decoration: none;
+  }
+  

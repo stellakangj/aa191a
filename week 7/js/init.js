@@ -1,83 +1,72 @@
-// declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
+// Declare variables
+let mapOptions = { 'center': [34.0709, -118.444], 'zoom': 5 };
 
-let food = L.featureGroup();
-let nonfood = L.featureGroup();
-
-let layers = {
-    "Food reccomended": food,
-    "Food not reccomended": nonfood
-}
-
-let circleOptions = {
-    radius: 4,
-    fillColor: "#ff7800",
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-}
-
-const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsjRq560pGcFJ5u3VcKZZABdC3YiFvBfYdAqf2C8aU-3bSN_XNrnC-eftIauGwCAYCaBKwuNKXW5ir/pub?output=csv"
-
-// define the leaflet map
+// Use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
-// add layer control box
-L.control.layers(null,layers).addTo(map)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16
-});
+// Create a function to add markers
+function addMarker(data) {
 
-Esri_WorldGrayCanvas.addTo(map);
-
-function addMarker(data){
-    if(data['Were you satisfied with you experience'] == "Yes"){
-        circleOptions.fillColor = "red"
-        food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food reccomended</h2>`))
-        createButtons(data.lat,data.lng,data['What zip code do you live in?'])
-        }
-    else{
-        circleOptions.fillColor = "blue"
-        nonFood.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Food not reccomended</h2>`))
-        createButtons(data.lat,data.lng,data['Where is the eatery located?'])
-    }
-    return data
+  if (data["Were you satisfied with your experience?"] == "positive experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'green'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'green');
+    return;
+  } else if (data["Were you satisfied with your experience?"] == "negative experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'red'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'red');
+    return;
+  } else if (data["Were you satisfied with your experience?"] == "neutral experience") {
+    L.circleMarker([data.lat, data.lng], {
+      radius: 15,
+      color: 'yellow'
+    }).addTo(map).bindPopup(`<h2>${data['Where is the eatery located?']}</h2><h3>${data['Is there anything that stood out to you about the experience?']}</h3>`);
+    createButton(data.lat, data.lng, data['Where is the eatery located?'], 'yellow');
+    return;
+  }
 }
 
-function createButtons(lat,lng,title){
-    const newButton = document.createElement("button"); // adds a new button
-    newButton.id = "button"+title; // gives the button a unique id
-    newButton.innerHTML = title; // gives the button a title
-    newButton.setAttribute("lat",lat); // sets the latitude 
-    newButton.setAttribute("lng",lng); // sets the longitude 
-    newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
-    })
-    const spaceForButtons = document.getElementById('placeForButtons')
-    spaceForButtons.appendChild(newButton);//this adds the button to our page.
+// Process the loaded data
+function processData(results) {
+  results.data.forEach(data => {
+    addMarker(data);
+    createButton(data.lat, data.lng, data['What is the name of the place?'], data['Is there anything that stood out to you about your experience?']);
+  });
 }
 
-function loadData(url){
-    Papa.parse(url, {
-        header: true,
-        download: true,
-        complete: results => processData(results)
-    })
+// Create a button based on the data
+function createButton(lat, lng, title) {
+  const newButton = document.createElement("button");
+  newButton.innerHTML = title;
+  newButton.addEventListener('click', function () {
+    map.flyTo([lat, lng]);
+  });
+  const spaceForButtons = document.getElementById('placeForButtons');
+  if (spaceForButtons) {
+    spaceForButtons.appendChild(newButton);
+  } else {
+    console.error("Element with ID 'placeForButtons' not found");
+  }
 }
 
-function processData(results){
-    console.log(results)
-    results.data.forEach(data => {
-        console.log(data)
-        addMarker(data)
-    })
-    food.addTo(map) // add our layers after markers have been made
-    nonFood.addTo(map) // add our layers after markers have been made  
-    let allLayers = L.featureGroup([food,nonfood]);
-    map.fitBounds(allLayers.getBounds());
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsjRq560pGcFJ5u3VcKZZABdC3YiFvBfYdAqf2C8aU-3bSN_XNrnC-eftIauGwCAYCaBKwuNKXW5ir/pub?output=csv";
+
+// Load data from the URL
+function loadData(url) {
+  Papa.parse(url, {
+    header: true,
+    download: true,
+    complete: results => processData(results)
+  });
 }
 
-loadData(dataUrl)
+loadData(dataUrl);
