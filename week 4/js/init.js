@@ -56,6 +56,4 @@ fetch("map.geojson")
         }).bindPopup(layer => {
             return layer.feature.properties.place;
         }).addTo(map);
-
-        // do something with the data
     })
