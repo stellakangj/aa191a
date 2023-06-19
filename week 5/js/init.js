@@ -33,20 +33,6 @@ function createButton(lat, lng, title, message) {
   }
 }
 
-fetch("map.geojson")
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
-    // Basic Leaflet method to add GeoJSON data
-    L.geoJSON(data, {
-      pointToLayer: (feature, latlng) => {
-        return L.circleMarker(latlng, { color: feature.properties.color });
-      }
-    }).bindPopup(layer => {
-      return layer.feature.properties.place;
-    }).addTo(map);
-  });
 
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsjRq560pGcFJ5u3VcKZZABdC3YiFvBfYdAqf2C8aU-3bSN_XNrnC-eftIauGwCAYCaBKwuNKXW5ir/pub?output=csv";
 
