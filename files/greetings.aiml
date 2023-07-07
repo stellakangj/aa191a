@@ -1,0 +1,128 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<category>
+    <pattern>HI</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>HELLO</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>How do I start the conversation?</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>Hi</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>hi</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>hello</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>HEY</pattern>
+    <template>
+        Hi there! I’m excited to get to know you better! To start us off, are you by chance a fan of animals? I’m actually a fan of elephants and animal welfare. I’d love to talk about it more with you if you’re down!
+    </template>
+</category>
+
+<category>
+    <pattern>YES</pattern>
+    <template>
+        Okay, so I guess I can start talking to you more about endangered elephants! For the longest time, elephants have been subjected to cruelty like the ivory trade boom in the 70’s and 80’s when elephants were killed for their tusks. It’s really sad, but all of this cruelty led to the loss of countless elephant lives. Did you know this?
+    </template>
+</category>
+
+<category>
+    <pattern>SURE</pattern>
+    <template>
+        Okay, so I guess I can start talking to you more about endangered elephants! For the longest time, elephants have been subjected to cruelty like the ivory trade boom in the 70’s and 80’s when elephants were killed for their tusks. It’s really sad, but all of this cruelty led to the loss of countless elephant lives. Did you know this?
+    </template>
+</category>
+
+
+<category>
+    <pattern>NO</pattern>
+    <template>
+        That's perfectly fine! Let's try to learn more about these wonderful animmals eventually. Thanks for chatting with me!
+    </template>
+</category>
+
+<category>
+    <pattern>THAT’S REALLY SAD</pattern>
+    <template>
+        I agree. Thankfully, there have been a lot of advancements recently! Many campaigns like World Wide Fund for Kenya advocate for better wildlife protection laws and ethical wildlife tourism. If you’d like to support them, I can show you what their website looks like!
+    </template>
+</category>
+
+<category>
+    <pattern>ARE THEY STILL BEING POACHED</pattern>
+    <template>
+        I agree. Thankfully, there have been a lot of advancements recently! Many campaigns like World Wide Fund for Kenya advocate for better wildlife protection laws and ethical wildlife tourism. If you’d like to support them, I can show you what their website looks like!
+    </template>
+</category>
+
+<category>
+    <pattern>SURE. SHARE THE WEBSITE</pattern>
+    <template>
+        Great! Let me show you some information about the World Wide Fund for Kenya and their efforts to protect elephants. Here is the <link href="https://www.wwfkenya.org/elephant_conservation/">website</link> 
+    </template>
+</category>
+
+<category>
+    <pattern>NO THANKS</pattern>
+    <template>
+        It was nice getting to know more about elephants. Thanks for chatting with me!
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT</pattern>
+    <template>
+        I apologize if I wasn't clear. I was referring to the cruelty elephants have endured, such as being killed for their tusks during the ivory trade boom. It's a tragic part of their history. To continue the conversation, please feel free to respond to the previous response/question.
+    </template>
+</category>
+
+<category>
+    <pattern>TELL ME MORE ABOUT ELEPHANTS</pattern>
+    <template>
+        Elephants are fascinating creatures! They are the largest land animals, known for their intelligence, social behavior, and iconic trunks. They play a crucial role in maintaining ecosystems. Did you have any specific aspect of elephants you would like to know more about?
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU SHARE SOME FACTS ABOUT ELEPHANTS</pattern>
+    <template>
+        Absolutely! Here are a few interesting facts about elephants: They have a highly developed sense of empathy, they communicate through a wide range of vocalizations and body language, and they form deep family bonds that can last a lifetime. Let me know if you want to explore any other elephant-related topics!
+    </template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <template>Sorry! I have no response for that!</template>
+</category>
+
+</aiml>
